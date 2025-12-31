@@ -24,10 +24,10 @@ export default function AuthSimpleLayout({
                                         className="absolute inset-0 h-full bg-cover bg-center"
                                         style={{ 
                                             // Chemin vers votre image de fond dans public/assets/img/
-                                            backgroundImage: "url('/assets/img/image-sign-up.jpg')",
+                                            backgroundImage: "url('/assets/img/image-sign-up-1.jpg')",
                                             backgroundColor: '#9b66ff' 
                                         }}
-                                    >
+                                    > 
                                         <div className="relative flex h-full flex-col justify-center px-16 text-left">
                                             <div className="max-w-sm">
                                                 <h1 className="mb-4 text-5xl font-extrabold text-white">
@@ -80,7 +80,7 @@ export default function AuthSimpleLayout({
                                                 
                                                 <div className="h-10 w-[1px] bg-gray-300 mx-2 hidden sm:block"></div>
                                                 <div className="text-left leading-none">
-                                                    <span className="text-[47px] font-black tracking-tight text-slate-800 uppercase">TRIALFORM</span>
+                                                    <span className="text-[47px] font-black tracking-tight text-dark-cyan-900 uppercase">TRIALFORM</span>
                                                     <p className="text-[10px] uppercase tracking-[0.2em] text-slate-500">Créez vos e-crf en toute simplicité</p>
                                                 </div>
                                             </div>

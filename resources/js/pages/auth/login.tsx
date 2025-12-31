@@ -160,8 +160,8 @@ export default function Login({ canResetPassword }: { canResetPassword: boolean 
 
                         {/* LISTE DES COMPTES RÉCENTS */}
                         {showRecent && recentAccounts.length > 0 && (
-                            <div className="absolute top-[78px] w-full z-50 bg-[#1e293b] border border-slate-700/50 rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-                                <div className="p-2.5 border-b border-slate-700/50 bg-slate-800/40">
+                            <div className="absolute top-[78px] w-full z-50 bg-dark-cyan-950 border border-slate-700/50 rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+                                <div className="p-2.5 border-b border-slate-700/50 bg-dark-cyan-900">
                                     <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 px-2 flex items-center gap-2">
                                         <Clock size={12} /> Comptes récents
                                     </span>
@@ -174,16 +174,16 @@ export default function Login({ canResetPassword }: { canResetPassword: boolean 
                                                 e.preventDefault(); // Évite la perte de focus de l'input
                                                 handleSelectAccount(acc.email);
                                             }}
-                                            className="group flex items-center justify-between p-3.5 hover:bg-slate-700/60 cursor-pointer transition-colors"
+                                            className="group flex items-center justify-between p-3.5 hover:bg-dark-cyan-900/60 cursor-pointer transition-colors"
                                         >
                                             <div className="flex items-center gap-3">
-                                                <div className="h-8 w-8 rounded-full bg-slate-700 flex items-center justify-center text-slate-300">
+                                                <div className="h-8 w-8 rounded-full bg-dark-cyan-700 flex items-center justify-center text-slate-300">
                                                     <User size={14} />
                                                 </div>
                                                 <div className="flex flex-col">
                                                     <span className="text-[13px] font-medium text-slate-100">{acc.email}</span>
                                                     {acc.role && (
-                                                        <span className={`w-fit mt-0.5 px-1.5 py-0.5 rounded-full border text-[8px] font-black uppercase ${acc.role === 'admin' ? 'text-amber-300 border-amber-500/30 bg-amber-500/10' : 'text-sky-300 border-sky-500/30 bg-sky-500/10'}`}>
+                                                        <span className={`w-fit mt-0.5 px-1.5 py-0.5 rounded-full border text-[8px] font-black uppercase ${acc.role === 'admin' ? 'text-amber-300 border-amber-500/30 bg-amber-500/10' : 'text-dark-cyan-600 border-dark-cyan-600/50 bg-sky-500/10'}`}>
                                                             {acc.role}
                                                         </span>
                                                     )}
@@ -257,7 +257,7 @@ export default function Login({ canResetPassword }: { canResetPassword: boolean 
 
                     <Button
                         type="submit"
-                        className="mt-4 w-full h-11 bg-[#1e293b] hover:bg-[#334155]"
+                        className="mt-4 w-full h-11 bg-dark-cyan-800 hover:bg-dark-cyan-900"
                         disabled={processing || checkingEmail}
                     >
                         {processing && <Spinner className="mr-2 h-4 w-4" />}
