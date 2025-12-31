@@ -32,11 +32,13 @@ RUN composer install --no-dev --optimize-autoloader
 RUN npm install
 RUN npm run build
 
-# Set permissions
+# Set permissions (Ajout du chmod pour être certain)
 RUN chown -R www-data:www-data /app/storage /app/bootstrap/cache
+RUN chmod -R 775 /app/storage /app/bootstrap/cache
 
-# Expose port
-EXPOSE 8000
+# Railway injecte dynamiquement le port, on ne doit pas l'exposer en dur
+# EXPOSE 8000 (Optionnel sur Railway, mais peut porter à confusion)
 
 # Start Laravel
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+# Changement CRUCIAL : Utilisation de la variable $PORT et exécution des migrations
+CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
