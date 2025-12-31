@@ -1,0 +1,191 @@
+@import 'tailwindcss';
+@import "tw-animate-css";
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    /* --- Nouvelle Palette Dark Cyan (OKLCH) --- */
+    --color-dark-cyan-50: oklch(97.82% 0.022 189.90);
+    --color-dark-cyan-100: oklch(95.69% 0.044 189.51);
+    --color-dark-cyan-200: oklch(91.96% 0.084 189.29);
+    --color-dark-cyan-300: oklch(88.83% 0.116 187.80);
+    --color-dark-cyan-400: oklch(86.38% 0.137 186.26);
+    --color-dark-cyan-500: oklch(84.61% 0.147 184.99);
+    --color-dark-cyan-600: oklch(71.58% 0.124 184.71);
+    --color-dark-cyan-700: oklch(57.96% 0.100 185.11);
+    --color-dark-cyan-800: oklch(43.48% 0.074 185.86);
+    --color-dark-cyan-900: oklch(27.60% 0.046 185.57);
+    --color-dark-cyan-950: oklch(22.45% 0.036 185.66);
+    --color-deep-space-blue-900: oklch(20.70% 0.023 257.29);
+
+    /* --- Mappage variables standards --- */
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    
+    --color-rail-background: var(--rail-background);
+    --destructive: oklch(0.577 0.245 27.325); /* Un rouge vif */
+    --destructive-foreground: oklch(0.98 0 0); /* Presque blanc */
+}
+
+:root {
+    /* Fond blanc pur pour la clarté */
+    --background: oklch(100% 0 0);
+    /* Texte principal assombri (Dark Cyan 950) pour un meilleur contraste */
+    --foreground: oklch(22.45% 0.036 185.66); 
+    --rail-background: #0f172a;
+    
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(22.45% 0.036 185.66);
+    
+    /* Primaire légèrement plus saturée pour l'action */
+    --primary: oklch(65% 0.13 184.71); 
+    --primary-foreground: oklch(100% 0 0);
+    
+    --secondary: oklch(95.69% 0.044 189.51);
+    --secondary-foreground: oklch(43.48% 0.074 185.86);
+    
+    --muted: oklch(97.82% 0.022 189.90);
+    /* Muted-foreground passe de 700 à 800 pour être plus lisible */
+    --muted-foreground: oklch(43.48% 0.074 185.86); 
+    
+    --accent: oklch(95.69% 0.044 189.51);
+    --accent-foreground: oklch(71.58% 0.124 184.71);
+    
+    /* Bordures plus douces mais visibles */
+    --border: oklch(91.96% 0.05 189.29); 
+    --input: oklch(91.96% 0.05 189.29);
+    --ring: oklch(71.58% 0.124 184.71);
+    
+    --radius: 0.85rem;
+    
+
+    /* --- Variables Spécifiques Sidebar --- */
+    --sidebar: oklch(1 0 0);
+    --sidebar-foreground: oklch(35% 0.05 185.86); /* Texte plus sombre */
+    --sidebar-primary: oklch(65% 0.13 184.71);
+    --sidebar-border: oklch(95.69% 0.044 189.51);
+    --destructive: oklch(0.396 0.141 25.723); /* Un rouge plus sombre */
+    --destructive-foreground: oklch(0.98 0 0);
+    --popover: 0 0% 100%; /* Blanc en mode clair */
+    --popover-foreground: 222.2 84% 4.9%;
+}
+
+.dark {
+    --background: oklch(20.70% 0.023 257.29);
+    --foreground: oklch(97.82% 0.022 189.90);
+
+    /* ✅ C'est ici qu'on définit la couleur spécifique "Slate" pour la cassure */
+    --rail-background: oklch(14.5% 0.012 250.2); /* Très sombre (Slate 950+) */
+    --sidebar: oklch(21.25% 0.014 251.5);      /* Plus clair (Slate 925) */
+    
+    --card: oklch(27.60% 0.046 185.57);
+    --card-foreground: oklch(97.82% 0.022 189.90);
+    
+    --primary: oklch(84.61% 0.147 184.99);
+    --primary-foreground: oklch(22.45% 0.036 185.66);
+    
+    --secondary: oklch(43.48% 0.074 185.86);
+    --secondary-foreground: oklch(97.82% 0.022 189.90);
+    
+    --muted: oklch(43.48% 0.074 185.86);
+    --muted-foreground: oklch(88.83% 0.116 187.80);
+    
+    --border: oklch(43.48% 0.074 185.86);
+    --input: oklch(43.48% 0.074 185.86);
+
+    --destructive: oklch(0.396 0.141 25.723); /* Un rouge plus sombre */
+    --destructive-foreground: oklch(0.98 0 0);
+
+    --popover: 222.2 84% 4.9%; /* Noir/Gris très foncé en mode dark */
+    --popover-foreground: 210 40% 98%;
+}
+
+@layer base {
+    * { @apply border-border outline-none; }
+    body { @apply bg-background text-foreground antialiased; }
+}
+
+/* --- Utilitaires personnalisés --- */
+@layer utilities {
+    /* Barre de défilement discrète pour la navigation centrale */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: oklch(91.96% 0.084 189.29); /* Dark Cyan 200 */
+        border-radius: 100px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background-color: oklch(88.83% 0.116 187.80); /* Dark Cyan 300 */
+    }
+}
+
+@keyframes scroll-text {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.hover-scroll:hover .scroll-content {
+  animation: scroll-text 5s linear infinite;
+  display: inline-block;
+  padding-left: 100%; /* Démarre après la fin du conteneur */
+}
+
+.scroll-container {
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+}
+
+/* Force la largeur du contenu du Select pour éviter les débordements */
+[data-radix-select-viewport] {
+    max-width: var(--radix-select-trigger-width);
+    overflow-x: hidden !important;
+}
+
+@layer utilities {
+  .collapsible-down {
+    animation: collapsible-down 0.2s ease-out;
+  }
+  .collapsible-up {
+    animation: collapsible-up 0.2s ease-out;
+  }
+}
+
+@keyframes collapsible-down {
+  from { height: 0; }
+  to { height: var(--radix-collapsible-content-height); }
+}
+
+@keyframes collapsible-up {
+  from { height: var(--radix-collapsible-content-height); }
+  to { height: 0; }
+}
