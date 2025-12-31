@@ -1,3 +1,4 @@
+# Base image PHP FPM
 FROM php:8.3-fpm
 
 # Install system dependencies
@@ -7,7 +8,10 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     libzip-dev \
     zip \
-    curl
+    curl \
+    npm \
+    nodejs \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo pdo_pgsql pgsql zip
@@ -24,11 +28,15 @@ COPY . .
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Permissions
+# Install Node dependencies and build React assets
+RUN npm install
+RUN npm run build
+
+# Set permissions
 RUN chown -R www-data:www-data /app/storage /app/bootstrap/cache
 
 # Expose port
 EXPOSE 8000
 
-# Start Laravel
-CMD php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=8000
+# Start Laravel (just serve, migrations à faire séparément)
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
