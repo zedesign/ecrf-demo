@@ -38,5 +38,5 @@ RUN chown -R www-data:www-data /app/storage /app/bootstrap/cache
 # Expose port
 EXPOSE 8000
 
-# Start Laravel (just serve, migrations à faire séparément)
+# Start Laravel
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
