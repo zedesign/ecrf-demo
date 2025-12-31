@@ -125,7 +125,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::post('/users', 'store')->name('users.store');
                 Route::put('/users/{user}', 'update')->name('users.update');
                 Route::delete('/users/{user}', 'destroy')->name('users.destroy');
-                Route::get('/centers-tab', 'index')->name('centers'); 
+                Route::get('/centers-tab', 'index')->name('centers.tab'); 
             });
 
             Route::controller(RoleController::class)->group(function () {
